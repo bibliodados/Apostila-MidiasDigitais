@@ -79,6 +79,9 @@ th{background:#e7f1ef;color:var(--brand);text-align:left;font-size:14px;text-tra
 .phone .safezone{position:absolute;left:13px;right:13px;top:35px;bottom:34px;border:2px dashed #fff;border-radius:8px}
 .phone .txt{position:absolute;left:16px;right:16px;bottom:38px;background:#fff;color:#124559;border-radius:4px;font-size:14px;text-align:center;font-weight:800;padding:4px}
 .refs p{font-size:14px;text-align:left;padding-left:18px;text-indent:-18px;margin-bottom:7px}
+.qr-box{margin-top:8mm;text-align:center;page-break-inside:avoid;break-inside:avoid}
+.qr-box img{width:30mm;height:30mm;image-rendering:pixelated}
+.qr-box p{font-size:13px;text-align:center;text-indent:0;padding-left:0;margin-top:4px;color:var(--muted)}
 .activity{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .checkbox li{list-style:none;position:relative;margin-left:4px}
 .checkbox li::before{content:"□";font-weight:800;color:var(--brand2);margin-right:6px}
@@ -95,10 +98,18 @@ th{background:#e7f1ef;color:var(--brand);text-align:left;font-size:14px;text-tra
   .cover{min-height:0}
 }
 </style>
+<script>
+function printClean(){
+  const oldTitle = document.title;
+  document.title = '';
+  window.print();
+  setTimeout(() => { document.title = oldTitle; }, 500);
+}
+</script>
 </head>
 <body>
 <div class="toolbar">
-  <button class="print-btn" onclick="window.print()">Salvar em PDF / Imprimir apostila</button>
+  <button class="print-btn" onclick="printClean()">Salvar em PDF / Imprimir apostila</button>
 </div>
 <main class="book">
 
@@ -412,6 +423,10 @@ th{background:#e7f1ef;color:var(--brand);text-align:left;font-size:14px;text-tra
   <p>YOUTUBE. <strong>YouTube recommended upload encoding settings</strong>. [S. l.]: YouTube Help, 2026. Disponível em: https://support.google.com/youtube/answer/1722171. Acesso em: 30 maio 2026.</p>
   <div class="note">
     <p><strong>Observação ABNT:</strong> os títulos receberam destaque tipográfico uniforme em negrito e as fontes online incluem endereço eletrônico e data de acesso.</p>
+  </div>
+  <div class="qr-box">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Fhtmlpreview.github.io%2F%3Fhttps%3A%2F%2Fgithub.com%2Fbibliodados%2FApostila-MidiasDigitais%2Fblob%2Fmain%2Findex.html" alt="QR Code para acessar a apostila HTML">
+    <p>Acesse a versão HTML completa da apostila</p>
   </div>
 </section>
 
