@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apostila | Utilização de Software de Criação e Edição de Vídeo</title>
+<style>
+:root{
+  --ink:#202124;
+  --muted:#5f6368;
+  --paper:#fffaf2;
+  --panel:#fff;
+  --line:#d9d1c4;
+  --brand:#124559;
+  --brand2:#2a9d8f;
+  --accent:#e76f51;
+  --gold:#f4a261;
+  --soft:#eef7f5;
+  --soft2:#fff2e9;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:#e8e3da;color:var(--ink);font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.45}
+body{padding:24px}
+.toolbar{position:sticky;top:12px;z-index:20;display:flex;justify-content:center;margin-bottom:18px}
+.print-btn{border:0;border-radius:8px;background:var(--brand);color:#fff;font-weight:700;padding:12px 18px;cursor:pointer;box-shadow:0 8px 22px rgba(18,69,89,.2)}
+.print-btn:hover{background:#0b3444}
+.book{display:flex;flex-direction:column;gap:18px;align-items:center}
+.page{width:210mm;min-height:297mm;background:var(--paper);padding:20mm;box-shadow:0 14px 40px rgba(0,0,0,.18);position:relative;overflow:hidden}
+.page::after{content:attr(data-page);position:absolute;right:20mm;bottom:12mm;color:#8c8377;font-size:14px;font-weight:700;letter-spacing:0;text-transform:none}
+.top{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;border-bottom:2px solid var(--brand);padding-bottom:8px;margin-bottom:14px}
+.uni{font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--brand);font-weight:800}
+.course{font-size:14px;color:var(--muted);font-weight:700;text-align:right}
+h1,h2,h3{line-height:1.12;margin:0 0 10px}
+h1{font-size:36px;color:var(--brand);letter-spacing:0}
+h2{font-size:25px;color:var(--brand);margin-top:4px}
+h3{font-size:18px;color:#193b45;margin-top:10px}
+p{font-size:14px;margin:0 0 9px;text-align:justify}
+.lead{font-size:17px;color:#30363a;text-align:left}
+.small{font-size:14px;color:var(--muted)}
+.tag{display:inline-block;background:var(--brand);color:#fff;border-radius:6px;padding:5px 8px;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.tag.green{background:var(--brand2)}.tag.orange{background:var(--accent)}.tag.gold{background:#b96d05}
+.grid{display:grid;gap:9px}
+.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px}
+.card.soft{background:var(--soft)}.card.warn{background:var(--soft2)}
+.card p:last-child{margin-bottom:0}
+ul,ol{margin:6px 0 10px 18px;padding:0}
+li{font-size:14px;margin-bottom:5px}
+strong{color:#172f37}
+.cover{display:grid;grid-template-columns:1fr;gap:14px;align-items:center;min-height:235mm}
+.cover h1{font-size:41px}
+.cover-meta{border-left:5px solid var(--brand2);padding-left:12px;margin-top:12px}
+.cover-hero{background:linear-gradient(135deg,#124559,#2a9d8f);border:0;border-radius:14px;padding:14px;margin:10px 0;color:#fff;box-shadow:0 12px 28px rgba(18,69,89,.18)}
+.cover-hero .caption{color:#f4fffc}
+.figure{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;margin:10px 0}
+.caption{font-size:14px;color:var(--muted);text-align:center;margin-top:5px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:8px 0}
+.flow .box{border:1px solid var(--line);border-radius:8px;background:#fff;padding:8px;text-align:center;min-height:54px}
+.flow .num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--brand2);color:#fff;font-size:14px;font-weight:800;margin-bottom:4px}
+.flow b{display:block;font-size:14px;color:var(--brand)}
+.flow span{font-size:14px;color:var(--muted)}
+table{border-collapse:collapse;width:100%;margin:8px 0 12px;font-size:14px;background:#fff}
+th,td{border:1px solid var(--line);padding:6px 7px;vertical-align:top}
+th{background:#e7f1ef;color:var(--brand);text-align:left;font-size:14px;text-transform:uppercase;letter-spacing:.035em}
+.note{border-left:4px solid var(--accent);background:#fff6f0;padding:9px 10px;margin:10px 0;border-radius:0 8px 8px 0}
+.quote{font-size:17px;font-weight:700;color:#17343d;text-align:left}
+.illus-title{font-size:14px;font-weight:800;color:var(--brand);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.safe{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:center}
+.phone{width:115px;height:205px;border:7px solid #172f37;border-radius:22px;background:#111;margin:0 auto;padding:10px;position:relative}
+.phone .screen{height:100%;border-radius:14px;background:linear-gradient(180deg,#2a9d8f,#124559);position:relative;overflow:hidden}
+.phone .safezone{position:absolute;left:13px;right:13px;top:35px;bottom:34px;border:2px dashed #fff;border-radius:8px}
+.phone .txt{position:absolute;left:16px;right:16px;bottom:38px;background:#fff;color:#124559;border-radius:4px;font-size:14px;text-align:center;font-weight:800;padding:4px}
+.refs p{font-size:14px;text-align:left;padding-left:18px;text-indent:-18px;margin-bottom:7px}
+.activity{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.checkbox li{list-style:none;position:relative;margin-left:4px}
+.checkbox li::before{content:"□";font-weight:800;color:var(--brand2);margin-right:6px}
+.toc li{font-size:14px;margin-bottom:7px}
+.mini-svg{width:100%;height:auto;display:block}
+@page{size:A4;margin:20mm}
+@media print{
+  body{padding:0;background:#fff}
+  .toolbar{display:none}
+  .book{gap:0}
+  .page{box-shadow:none;margin:0;width:auto;min-height:0;height:auto;padding:0;background:#fff;overflow:visible;break-after:page;page-break-after:always}
+  .page::after{position:static;display:block;text-align:right;margin-top:8mm}
+  .page:last-child{break-after:auto;page-break-after:auto}
+}
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <button class="print-btn" onclick="window.print()">Salvar em PDF / Imprimir apostila</button>
+</div>
+<main class="book">
+
+<section class="page" data-page="1">
+  <div class="cover">
+    <div>
+      <div class="uni">Universidade Federal do Norte do Tocantins | UFNT</div>
+      <h1>Utilização de Software de Criação e Edição de Vídeo</h1>
+      <p class="lead">Apostila ilustrada de apoio para o curso <strong>Marketing e Gestão de Mídias Digitais</strong>.</p>
+      <div class="cover-meta">
+        <p><strong>Tema:</strong> fluxo de trabalho da produção audiovisual para marketing digital.</p>
+        <p><strong>Objetivo:</strong> orientar a escolha e o uso de ferramentas de vídeo, do briefing à análise de performance.</p>
+        <p><strong>Carga de referência:</strong> aula de 30 minutos, com aplicação prática.</p>
+      </div>
+      <div class="note">
+        <p class="quote">Produzir vídeo para marketing não é apenas “editar bonito”: é organizar atenção, mensagem, identidade e resultado.</p>
+      </div>
+    </div>
+    <div class="figure cover-hero">
+      <svg class="mini-svg" viewBox="0 0 760 360" role="img" aria-label="Ilustração editorial de produção e edição de vídeo">
+        <defs>
+          <linearGradient id="heroBg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#fffaf2" stop-opacity=".96"/>
+            <stop offset="1" stop-color="#e7f1ef" stop-opacity=".92"/>
+          </linearGradient>
+          <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#0b3444" flood-opacity=".22"/>
+          </filter>
+        </defs>
+        <rect x="18" y="18" width="724" height="324" rx="22" fill="url(#heroBg)"/>
+        <rect x="70" y="58" width="405" height="215" rx="18" fill="#102f3b" filter="url(#shadow)"/>
+        <rect x="92" y="78" width="361" height="156" rx="12" fill="#fffaf2"/>
+        <rect x="112" y="98" width="152" height="96" rx="10" fill="#2a9d8f"/>
+        <polygon points="166,122 166,170 208,146" fill="#fff"/>
+        <rect x="282" y="105" width="112" height="13" rx="7" fill="#e76f51"/>
+        <rect x="282" y="134" width="84" height="13" rx="7" fill="#f4a261"/>
+        <rect x="282" y="163" width="135" height="13" rx="7" fill="#2a9d8f"/>
+        <rect x="105" y="250" width="334" height="15" rx="8" fill="#2a9d8f"/>
+        <rect x="118" y="286" width="470" height="42" rx="10" fill="#fff" opacity=".96"/>
+        <rect x="139" y="300" width="92" height="14" rx="7" fill="#2a9d8f"/>
+        <rect x="244" y="300" width="74" height="14" rx="7" fill="#e76f51"/>
+        <rect x="331" y="300" width="128" height="14" rx="7" fill="#f4a261"/>
+        <rect x="472" y="300" width="72" height="14" rx="7" fill="#124559"/>
+        <line x1="139" y1="288" x2="139" y2="326" stroke="#e76f51" stroke-width="4"/>
+        <circle cx="139" cy="288" r="7" fill="#fff"/>
+        <rect x="526" y="66" width="126" height="224" rx="24" fill="#172f37" filter="url(#shadow)"/>
+        <rect x="540" y="86" width="98" height="184" rx="16" fill="#fffaf2"/>
+        <rect x="553" y="105" width="72" height="112" rx="10" fill="#2a9d8f"/>
+        <circle cx="589" cy="160" r="24" fill="#fff" opacity=".92"/>
+        <polygon points="581,148 581,173 603,160" fill="#e76f51"/>
+        <rect x="557" y="232" width="64" height="11" rx="6" fill="#124559"/>
+        <rect x="565" y="250" width="48" height="9" rx="5" fill="#e76f51"/>
+        <circle cx="651" cy="73" r="35" fill="#f4a261"/>
+        <text x="651" y="81" text-anchor="middle" font-size="30" font-weight="800" fill="#124559">▶</text>
+      </svg>
+      <div class="caption">Figura 1 - A edição como organização estratégica de cenas, som, texto e publicação.</div>
+    </div>
+  </div>
+</section>
+
+<section class="page" data-page="2">
+  <div class="top"><div><div class="uni">Apostila de apoio</div><h2>1. Apresentação e objetivos</h2></div><div class="course">Marketing e Gestão de Mídias Digitais</div></div>
+  <p>O vídeo ocupa posição central nas estratégias digitais porque combina imagem, som, texto, ritmo e presença humana em uma linguagem de alto poder de síntese. Para o profissional de marketing, dominar softwares de criação e edição significa transformar uma intenção de comunicação em conteúdo publicável, mensurável e ajustável.</p>
+  <p>Esta apostila foi organizada a partir do roteiro da apresentação <em>Fluxo de Trabalho da Produção de Vídeo</em> e do modelo de apostila de produção de mídias. A proposta é oferecer uma visão prática, mas fundamentada, sobre como planejar, editar, exportar, publicar e analisar vídeos para ambientes digitais.</p>
+  <div class="grid g3">
+    <div class="card soft"><span class="tag green">Saber</span><p>Reconhecer conceitos de timeline, corte, legenda, áudio, proporção de tela, exportação e métrica.</p></div>
+    <div class="card soft"><span class="tag green">Fazer</span><p>Escolher ferramentas como CapCut, Canva, Clipchamp, Premiere Pro ou DaVinci Resolve conforme a demanda.</p></div>
+    <div class="card soft"><span class="tag green">Avaliar</span><p>Usar retenção, engajamento e conversão para melhorar a próxima produção.</p></div>
+  </div>
+  <h3>1.1 Como usar esta apostila</h3>
+  <ul class="toc">
+    <li>Ler o fluxo completo antes de abrir qualquer software.</li>
+    <li>Usar os quadros de checklist como guia de produção em grupo.</li>
+    <li>Aplicar a atividade final em uma marca real ou fictícia.</li>
+    <li>Salvar esta apostila em PDF pelo botão no topo da página.</li>
+  </ul>
+  <div class="note">
+    <p>Na perspectiva da aprendizagem multimídia, textos, imagens e exemplos devem trabalhar juntos para reduzir esforço desnecessário e favorecer a compreensão do conteúdo (Mayer, 2009). Por isso, a apostila combina explicação, ilustrações e quadros de decisão.</p>
+  </div>
+  <h3>1.2 Competências trabalhadas</h3>
+  <table>
+    <thead><tr><th>Competência</th><th>Aplicação na prática profissional</th></tr></thead>
+    <tbody>
+      <tr><td>Planejamento</td><td>Traduzir objetivo de marketing em briefing e roteiro.</td></tr>
+      <tr><td>Produção</td><td>Captar materiais com qualidade técnica suficiente para edição.</td></tr>
+      <tr><td>Edição</td><td>Construir narrativa, ritmo, clareza e identidade visual.</td></tr>
+      <tr><td>Distribuição</td><td>Exportar e publicar no formato correto de cada plataforma.</td></tr>
+      <tr><td>Análise</td><td>Interpretar métricas para tomada de decisão.</td></tr>
+    </tbody>
+  </table>
+  <div class="figure">
+    <div class="illus-title">Ciclo de aprendizagem em vídeo</div>
+    <svg class="mini-svg" viewBox="0 0 720 120" role="img" aria-label="Ciclo de aprender, produzir e melhorar vídeos">
+      <rect x="32" y="28" width="138" height="54" rx="10" fill="#e7f1ef" stroke="#2a9d8f"/>
+      <text x="101" y="61" text-anchor="middle" font-size="18" font-weight="700" fill="#124559">Planejar</text>
+      <path d="M176 55 H248" stroke="#124559" stroke-width="4" marker-end="url(#arr2)"/>
+      <rect x="254" y="28" width="138" height="54" rx="10" fill="#fff2e9" stroke="#e76f51"/>
+      <text x="323" y="61" text-anchor="middle" font-size="18" font-weight="700" fill="#124559">Produzir</text>
+      <path d="M398 55 H470" stroke="#124559" stroke-width="4" marker-end="url(#arr2)"/>
+      <rect x="476" y="28" width="138" height="54" rx="10" fill="#e7f1ef" stroke="#2a9d8f"/>
+      <text x="545" y="61" text-anchor="middle" font-size="18" font-weight="700" fill="#124559">Melhorar</text>
+      <defs><marker id="arr2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#124559"/></marker></defs>
+    </svg>
+    <div class="caption">Figura 2 - O aluno aprende o fluxo completo quando conecta planejamento, produção e análise.</div>
+  </div>
+</section>
+
+<section class="page" data-page="3">
+  <div class="top"><div><div class="uni">Fundamentos</div><h2>2. Vídeo, marketing digital e escolha de software</h2></div><div class="course">Da ferramenta à estratégia</div></div>
+  <p>No marketing digital, a escolha do software não é uma decisão puramente técnica. Ela envolve objetivo de comunicação, tempo de produção, equipe disponível, orçamento, plataforma de destino e nível de acabamento esperado. Um vídeo rápido para Reels pode ser produzido no CapCut; uma peça institucional com várias entrevistas pode exigir Premiere Pro ou DaVinci Resolve.</p>
+  <p>Relatórios de mercado destacam a relevância do vídeo nas estratégias de comunicação digital, incluindo produção de conteúdo educativo, demonstrações de produto, vídeos curtos e reaproveitamento de materiais longos em cortes menores (Wistia, 2024; Wyzowl, 2026). Essa lógica reforça a necessidade de processos claros.</p>
+  <div class="figure">
+    <div class="illus-title">Mapa de decisão do software</div>
+    <svg class="mini-svg" viewBox="0 0 720 190" role="img" aria-label="Mapa de decisão para escolha de software">
+      <rect x="15" y="35" width="130" height="72" rx="10" fill="#e7f1ef" stroke="#2a9d8f"/>
+      <text x="80" y="65" text-anchor="middle" font-size="16" font-weight="700" fill="#124559">Objetivo</text>
+      <text x="80" y="88" text-anchor="middle" font-size="14" fill="#5f6368">vender, informar</text>
+      <path d="M150 72 H210" stroke="#124559" stroke-width="3" marker-end="url(#arr)"/>
+      <rect x="215" y="35" width="130" height="72" rx="10" fill="#fff2e9" stroke="#e76f51"/>
+      <text x="280" y="65" text-anchor="middle" font-size="16" font-weight="700" fill="#124559">Plataforma</text>
+      <text x="280" y="88" text-anchor="middle" font-size="14" fill="#5f6368">Reels, YouTube</text>
+      <path d="M350 72 H410" stroke="#124559" stroke-width="3" marker-end="url(#arr)"/>
+      <rect x="415" y="35" width="130" height="72" rx="10" fill="#fff" stroke="#d9d1c4"/>
+      <text x="480" y="65" text-anchor="middle" font-size="16" font-weight="700" fill="#124559">Equipe</text>
+      <text x="480" y="88" text-anchor="middle" font-size="14" fill="#5f6368">nível e prazo</text>
+      <path d="M550 72 H610" stroke="#124559" stroke-width="3" marker-end="url(#arr)"/>
+      <rect x="615" y="35" width="90" height="72" rx="10" fill="#124559"/>
+      <text x="660" y="65" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">Software</text>
+      <text x="660" y="88" text-anchor="middle" font-size="14" fill="#fffaf2">adequado</text>
+      <defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#124559"/></marker></defs>
+    </svg>
+    <div class="caption">Figura 3 - A ferramenta deve responder ao contexto de produção, não apenas à preferência pessoal.</div>
+  </div>
+  <table>
+    <thead><tr><th>Ferramenta</th><th>Perfil de uso</th><th>Quando priorizar</th></tr></thead>
+    <tbody>
+      <tr><td>CapCut</td><td>Editor ágil para vídeo curto, templates, legendas e recursos de IA.</td><td>Reels, TikTok, Shorts, tendências e produção com celular.</td></tr>
+      <tr><td>Canva Vídeo</td><td>Criação visual com templates, identidade de marca e animações simples.</td><td>Peças leves, posts animados, apresentação visual e conteúdo institucional curto.</td></tr>
+      <tr><td>Microsoft Clipchamp</td><td>Editor de baixa barreira de entrada, integrado ao ecossistema Microsoft.</td><td>Vídeos rápidos, gravações de tela e comunicação cotidiana.</td></tr>
+      <tr><td>Adobe Premiere Pro</td><td>Editor profissional de linha do tempo para fluxos mais complexos.</td><td>Campanhas, vídeos institucionais, projetos com várias camadas e equipe experiente.</td></tr>
+      <tr><td>DaVinci Resolve</td><td>Ferramenta profissional com edição, cor, áudio e efeitos integrados.</td><td>Projetos com maior acabamento visual, correção de cor e padrão profissional.</td></tr>
+    </tbody>
+  </table>
+  <p class="small">Fontes de apoio: Adobe (2026), Blackmagic Design (2026), Canva (2026), Microsoft (2026) e TikTok for Business (2026) apresentam esses softwares e/ou especificações como recursos de criação, edição ou publicação de vídeo.</p>
+</section>
+
+<section class="page" data-page="4">
+  <div class="top"><div><div class="uni">Workflow</div><h2>3. Fluxo de trabalho da produção audiovisual</h2></div><div class="course">8 etapas essenciais</div></div>
+  <p>O fluxo de trabalho organiza a produção para evitar improviso. Cada etapa precisa gerar um entregável mínimo: uma ficha, roteiro, pasta de arquivos, versão editada, checklist, arquivo exportado, post publicado ou relatório de métricas.</p>
+  <div class="flow">
+    <div class="box"><span class="num">1</span><b>Briefing</b><span>objetivo e público</span></div>
+    <div class="box"><span class="num">2</span><b>Roteiro</b><span>hook, cenas e CTA</span></div>
+    <div class="box"><span class="num">3</span><b>Captação</b><span>imagem e áudio</span></div>
+    <div class="box"><span class="num">4</span><b>Edição</b><span>timeline e ritmo</span></div>
+    <div class="box"><span class="num">5</span><b>Revisão</b><span>qualidade e aprovação</span></div>
+    <div class="box"><span class="num">6</span><b>Exportação</b><span>formato correto</span></div>
+    <div class="box"><span class="num">7</span><b>Publicação</b><span>capa e metadados</span></div>
+    <div class="box"><span class="num">8</span><b>Análise</b><span>métricas e melhoria</span></div>
+  </div>
+  <h3>3.1 Briefing</h3>
+  <p>O briefing levanta o problema de comunicação: o que a marca quer alcançar, com quem deseja falar, qual mensagem precisa transmitir, onde o vídeo será publicado e quais restrições existem. Sem briefing, a equipe grava e edita sem critério.</p>
+  <div class="grid g2">
+    <div class="card soft"><strong>Entregável:</strong><p>Ficha com objetivo, público-alvo, plataforma, mensagem principal, prazo, orçamento e responsável pela aprovação.</p></div>
+    <div class="card warn"><strong>Erro comum:</strong><p>Começar a gravar porque “já temos uma ideia”, sem saber qual comportamento o vídeo deve provocar.</p></div>
+  </div>
+  <h3>3.2 Roteiro</h3>
+  <p>O roteiro transforma o briefing em narrativa. Em vídeos curtos, deve conter gancho inicial, sequência de ideias, cenas previstas, textos em tela e chamada para ação. Torres (2018) ressalta a importância da comunicação digital orientada por estratégia; no vídeo, essa estratégia aparece na estrutura da mensagem.</p>
+  <div class="grid g3">
+    <div class="card"><span class="tag orange">Hook</span><p>Começo com problema, promessa, contraste ou pergunta.</p></div>
+    <div class="card"><span class="tag green">Corpo</span><p>Desenvolvimento em blocos simples, com ritmo visual.</p></div>
+    <div class="card"><span class="tag">CTA</span><p>Ação final: comentar, salvar, comprar, seguir ou acessar.</p></div>
+  </div>
+  <h3>3.3 Captação</h3>
+  <p>Captação é a gravação dos materiais que serão usados na edição: imagem, voz, cenas de apoio, tela, produto e bastidores. A regra prática é gravar pensando na timeline: bons planos extras ajudam a cobrir cortes e manter o vídeo fluido.</p>
+</section>
+
+<section class="page" data-page="5">
+  <div class="top"><div><div class="uni">Produção e pós-produção</div><h2>4. Da edição à exportação</h2></div><div class="course">Qualidade técnica e narrativa</div></div>
+  <h3>4.1 Edição</h3>
+  <p>A edição organiza o material captado na timeline. Nessa etapa, o editor seleciona os melhores trechos, elimina pausas, ajusta áudio, adiciona legendas, aplica correção de cor e insere elementos de identidade visual. O objetivo é fazer a mensagem ficar clara e o vídeo manter atenção.</p>
+  <div class="figure">
+    <div class="illus-title">Camadas da timeline</div>
+    <svg class="mini-svg" viewBox="0 0 720 210" role="img" aria-label="Ilustração de timeline de edição">
+      <rect x="20" y="20" width="680" height="170" rx="14" fill="#fff" stroke="#d9d1c4"/>
+      <line x1="90" y1="42" x2="90" y2="172" stroke="#e76f51" stroke-width="4"/>
+      <text x="38" y="58" font-size="14" fill="#124559" font-weight="700">Vídeo</text>
+      <rect x="100" y="45" width="150" height="24" rx="5" fill="#2a9d8f"/><rect x="258" y="45" width="98" height="24" rx="5" fill="#2a9d8f"/><rect x="364" y="45" width="186" height="24" rx="5" fill="#2a9d8f"/>
+      <text x="38" y="98" font-size="14" fill="#124559" font-weight="700">Texto</text>
+      <rect x="130" y="84" width="180" height="22" rx="5" fill="#f4a261"/><rect x="394" y="84" width="126" height="22" rx="5" fill="#f4a261"/>
+      <text x="38" y="136" font-size="14" fill="#124559" font-weight="700">Áudio</text>
+      <rect x="100" y="122" width="450" height="22" rx="5" fill="#124559"/>
+      <text x="38" y="174" font-size="14" fill="#124559" font-weight="700">Trilha</text>
+      <rect x="100" y="160" width="560" height="12" rx="6" fill="#e76f51"/>
+    </svg>
+    <div class="caption">Figura 4 - A timeline combina vídeo, texto, fala, trilha, ritmo e identidade visual.</div>
+  </div>
+  <table>
+    <thead><tr><th>Camada</th><th>Decisão de edição</th><th>Efeito na comunicação</th></tr></thead>
+    <tbody>
+      <tr><td>Corte</td><td>Remover pausas, erros, repetições e trechos sem função.</td><td>Mais ritmo e retenção.</td></tr>
+      <tr><td>Legenda</td><td>Inserir texto legível e sincronizado com a fala.</td><td>Acessibilidade e compreensão sem som.</td></tr>
+      <tr><td>Áudio</td><td>Equilibrar voz, trilha e efeitos sonoros.</td><td>Credibilidade e conforto de consumo.</td></tr>
+      <tr><td>Cor</td><td>Ajustar exposição, contraste e identidade visual.</td><td>Unidade estética e valor percebido.</td></tr>
+    </tbody>
+  </table>
+  <h3>4.2 Revisão</h3>
+  <p>A revisão verifica se o vídeo atende ao briefing e se não há falhas técnicas ou textuais. Deve ser feita no computador e também no celular, pois boa parte do consumo ocorre em telas pequenas.</p>
+  <ul class="checkbox">
+    <li>O objetivo do briefing aparece no vídeo?</li>
+    <li>O hook surge nos primeiros segundos?</li>
+    <li>As legendas estão corretas, legíveis e sincronizadas?</li>
+    <li>O áudio está claro e sem ruído excessivo?</li>
+    <li>A identidade visual da marca foi respeitada?</li>
+  </ul>
+  <h3>4.3 Exportação</h3>
+  <p>A exportação transforma o projeto editável em arquivo final. Plataformas como YouTube indicam configurações recomendadas de envio para preservar a experiência de visualização (YouTube, 2026). Em termos práticos, MP4 com codec H.264 continua sendo uma opção comum e compatível para muitas redes.</p>
+  <table>
+    <thead><tr><th>Uso</th><th>Proporção</th><th>Resolução prática</th><th>Exemplo</th></tr></thead>
+    <tbody>
+      <tr><td>Vídeo vertical</td><td>9:16</td><td>1080 × 1920</td><td>Reels, TikTok, Shorts, Stories.</td></tr>
+      <tr><td>Vídeo horizontal</td><td>16:9</td><td>1920 × 1080</td><td>YouTube, site, aula, institucional.</td></tr>
+      <tr><td>Vídeo quadrado</td><td>1:1</td><td>1080 × 1080</td><td>Feed e peças reaproveitáveis.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="page" data-page="6">
+  <div class="top"><div><div class="uni">Distribuição</div><h2>5. Publicação, áreas seguras e análise</h2></div><div class="course">Do arquivo ao resultado</div></div>
+  <h3>5.1 Publicação</h3>
+  <p>Publicar é preparar o vídeo para o encontro com o público. A etapa inclui capa, título, descrição, legenda, hashtags, palavras-chave, localização, marcações, horário, impulsionamento e adequação à linguagem da plataforma. TikTok Ads Manager, Meta, YouTube e outras plataformas possuem especificações próprias; por isso, o editor precisa conhecer o destino antes de exportar.</p>
+  <div class="safe">
+    <div class="figure">
+      <div class="phone"><div class="screen"><div class="safezone"></div><div class="txt">TEXTO NA ÁREA SEGURA</div></div></div>
+      <div class="caption">Figura 5 - Em vídeo vertical, textos importantes devem ficar longe de botões, legendas automáticas e bordas.</div>
+    </div>
+    <div>
+      <h3>Checklist de publicação</h3>
+      <ul class="checkbox">
+        <li>Capa compreensível em tamanho pequeno.</li>
+        <li>Legenda com contexto e CTA.</li>
+        <li>Hashtags coerentes com nicho e objetivo.</li>
+        <li>Formato adequado ao canal.</li>
+        <li>Link, botão ou próxima ação revisados.</li>
+        <li>Agendamento alinhado ao comportamento do público.</li>
+      </ul>
+    </div>
+  </div>
+  <h3>5.2 Análise de performance</h3>
+  <p>A análise encerra um ciclo e inicia o próximo. Não basta observar curtidas: é preciso interpretar retenção, taxa de conclusão, comentários, salvamentos, compartilhamentos, cliques e conversões. Essa leitura conecta edição e estratégia, pois mostra onde o público entrou, permaneceu ou abandonou o conteúdo.</p>
+  <table>
+    <thead><tr><th>Métrica</th><th>O que revela</th><th>O que ajustar</th></tr></thead>
+    <tbody>
+      <tr><td>Retenção</td><td>Tempo médio de permanência.</td><td>Hook, ritmo, cortes e duração.</td></tr>
+      <tr><td>Conclusão</td><td>Percentual que chega ao fim.</td><td>Promessa inicial, clareza e recompensa final.</td></tr>
+      <tr><td>Engajamento</td><td>Interação com o conteúdo.</td><td>Tema, CTA e relevância prática.</td></tr>
+      <tr><td>Conversão</td><td>Ação ligada ao objetivo.</td><td>Oferta, link, página e segmentação.</td></tr>
+    </tbody>
+  </table>
+  <div class="note">
+    <p>Em Marketing 5.0, Kotler, Kartajaya e Setiawan (2021) destacam a importância de tecnologias e dados para aproximar marcas e pessoas. Na produção de vídeo, essa aproximação acontece quando a equipe usa métricas para melhorar a próxima peça.</p>
+  </div>
+</section>
+
+<section class="page" data-page="7">
+  <div class="top"><div><div class="uni">Aplicação prática</div><h2>6. Atividades, estudo de caso e checklist final</h2></div><div class="course">Aprender fazendo</div></div>
+  <h3>6.1 Situação-problema</h3>
+  <div class="activity">
+    <div class="card warn">
+      <span class="tag orange">Caso A</span>
+      <p><strong>Confeitaria local:</strong> precisa de um Reels para divulgar promoção de fim de semana. A equipe tem celular, luz natural e uma hora de produção.</p>
+      <p><strong>Desafio:</strong> escolher software, roteiro curto, captação mínima, formato e CTA.</p>
+    </div>
+    <div class="card soft">
+      <span class="tag green">Caso B</span>
+      <p><strong>Empresa regional:</strong> quer vídeo institucional de 5 minutos para YouTube e site. Há 10 dias, entrevistas e aprovação da diretoria.</p>
+      <p><strong>Desafio:</strong> organizar briefing, roteiro, captação, revisão e exportação profissional.</p>
+    </div>
+  </div>
+  <h3>6.2 Tarefa orientada</h3>
+  <p>Produza, individualmente ou em dupla, um vídeo de até 30 segundos para uma marca real ou fictícia. O vídeo deve apresentar hook, mensagem principal, legenda, identidade visual simples e CTA. A entrega deve incluir o arquivo final e uma ficha de produção.</p>
+  <table>
+    <thead><tr><th>Item entregue</th><th>Descrição mínima</th><th>Peso sugerido</th></tr></thead>
+    <tbody>
+      <tr><td>Briefing</td><td>Objetivo, público, plataforma e mensagem principal.</td><td>20%</td></tr>
+      <tr><td>Roteiro</td><td>Hook, sequência de cenas e CTA.</td><td>20%</td></tr>
+      <tr><td>Vídeo editado</td><td>Corte, legenda, áudio compreensível e identidade visual.</td><td>35%</td></tr>
+      <tr><td>Exportação</td><td>Formato compatível com a plataforma escolhida.</td><td>10%</td></tr>
+      <tr><td>Análise simulada</td><td>Quais métricas seriam acompanhadas e por quê.</td><td>15%</td></tr>
+    </tbody>
+  </table>
+  <h3>6.3 Checklist final do fluxo</h3>
+  <div class="grid g2">
+    <ul class="checkbox card">
+      <li>Briefing aprovado.</li>
+      <li>Roteiro com hook e CTA.</li>
+      <li>Captação com áudio limpo.</li>
+      <li>Planos extras gravados.</li>
+    </ul>
+    <ul class="checkbox card">
+      <li>Timeline organizada.</li>
+      <li>Legenda revisada.</li>
+      <li>Exportação correta.</li>
+      <li>Métricas definidas.</li>
+    </ul>
+  </div>
+  <div class="note">
+    <p class="quote">Regra de ouro: um vídeo simples, claro e publicado no prazo pode ser mais eficiente que um vídeo sofisticado entregue tarde demais.</p>
+  </div>
+  <div class="figure">
+    <div class="illus-title">Storyboard simplificado para vídeo curto</div>
+    <svg class="mini-svg" viewBox="0 0 720 150" role="img" aria-label="Storyboard com quatro cenas de vídeo curto">
+      <rect x="28" y="24" width="150" height="86" rx="8" fill="#fff" stroke="#d9d1c4"/>
+      <circle cx="72" cy="60" r="19" fill="#2a9d8f"/>
+      <rect x="105" y="48" width="44" height="11" rx="5" fill="#124559"/>
+      <rect x="105" y="68" width="52" height="11" rx="5" fill="#e76f51"/>
+      <text x="103" y="132" text-anchor="middle" font-size="16" font-weight="700" fill="#124559">Hook</text>
+      <rect x="205" y="24" width="150" height="86" rx="8" fill="#fff" stroke="#d9d1c4"/>
+      <rect x="230" y="48" width="96" height="14" rx="6" fill="#2a9d8f"/>
+      <rect x="230" y="74" width="72" height="14" rx="6" fill="#f4a261"/>
+      <text x="280" y="132" text-anchor="middle" font-size="16" font-weight="700" fill="#124559">Valor</text>
+      <rect x="382" y="24" width="150" height="86" rx="8" fill="#fff" stroke="#d9d1c4"/>
+      <polygon points="440,47 440,88 478,67" fill="#e76f51"/>
+      <text x="457" y="132" text-anchor="middle" font-size="16" font-weight="700" fill="#124559">Prova</text>
+      <rect x="559" y="24" width="132" height="86" rx="8" fill="#124559"/>
+      <rect x="583" y="50" width="84" height="16" rx="8" fill="#fffaf2"/>
+      <rect x="601" y="76" width="48" height="13" rx="6" fill="#2a9d8f"/>
+      <text x="625" y="132" text-anchor="middle" font-size="16" font-weight="700" fill="#124559">CTA</text>
+    </svg>
+    <div class="caption">Figura 6 - Um vídeo curto pode ser planejado em quatro quadros: gancho, valor, prova e chamada para ação.</div>
+  </div>
+</section>
+
+<section class="page refs" data-page="8">
+  <div class="top"><div><div class="uni">Bibliografia</div><h2>7. Referências</h2></div></div>
+  <p>ADOBE. <strong>Adobe Premiere Pro</strong>. San Jose: Adobe, 2026. Disponível em: https://www.adobe.com/products/premiere.html. Acesso em: 30 maio 2026.</p>
+  <p>BLACKMAGIC DESIGN. <strong>DaVinci Resolve</strong>. Port Melbourne: Blackmagic Design, 2026. Disponível em: https://www.blackmagicdesign.com/products/davinciresolve. Acesso em: 30 maio 2026.</p>
+  <p>CANVA. <strong>Editor de vídeos</strong>: crie e edite vídeos online grátis. [S. l.]: Canva, 2026. Disponível em: https://www.canva.com/es_us/crear/videos/. Acesso em: 30 maio 2026.</p>
+  <p>CAPCUT. <strong>CapCut AI Video Editor</strong>: smart online video editing with advanced AI tools. [S. l.]: CapCut, 2026. Disponível em: https://www.capcut.com/view. Acesso em: 30 maio 2026.</p>
+  <p>KOTLER, Philip; KARTAJAYA, Hermawan; SETIAWAN, Iwan. <strong>Marketing 5.0</strong>: tecnologia para a humanidade. Rio de Janeiro: Sextante, 2021.</p>
+  <p>MAYER, Richard E. <strong>Multimedia learning</strong>. 2. ed. Cambridge: Cambridge University Press, 2009.</p>
+  <p>MICROSOFT. <strong>Clipchamp free video editor and video maker</strong>. Redmond: Microsoft, 2026. Disponível em: https://www.microsoft.com/en-us/microsoft-365/clipchamp. Acesso em: 30 maio 2026.</p>
+  <p>TIKTOK FOR BUSINESS. <strong>TikTok Auction In-Feed Ads</strong>. [S. l.]: TikTok, 2026. Disponível em: https://ads.tiktok.com/help/article/video-ads-specifications. Acesso em: 30 maio 2026.</p>
+  <p>TORRES, Cláudio. <strong>A Bíblia do Marketing Digital</strong>: tudo o que você queria saber sobre marketing e publicidade na internet. São Paulo: Novatec, 2018.</p>
+  <p>WISTIA. <strong>Top 5 insights from Wistia's 2024 State of Video Report</strong>. Cambridge: Wistia, 2024. Disponível em: https://wistia.com/learn/marketing/insights-state-of-video-report. Acesso em: 30 maio 2026.</p>
+  <p>WYZOWL. <strong>Video Marketing Statistics 2026</strong>: 12 years of data. [S. l.]: Wyzowl, 2026. Disponível em: https://www.wyzowl.com/sovm-results-2023/. Acesso em: 30 maio 2026.</p>
+  <p>YOUTUBE. <strong>YouTube recommended upload encoding settings</strong>. [S. l.]: YouTube Help, 2026. Disponível em: https://support.google.com/youtube/answer/1722171. Acesso em: 30 maio 2026.</p>
+  <div class="note">
+    <p><strong>Observação ABNT:</strong> os títulos receberam destaque tipográfico uniforme em negrito e as fontes online incluem endereço eletrônico e data de acesso.</p>
+  </div>
+</section>
+
+</main>
+</body>
+</html>
