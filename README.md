@@ -6,7 +6,7 @@ Apostila ilustrada em HTML desenvolvida para o curso **Marketing e Gestão de M�
 
 Abra a versão completa em HTML:
 
-https://htmlpreview.github.io/?https://github.com/bibliodados/Apostila-MidiasDigitais/blob/main/index.html
+[index.html](https://htmlpreview.github.io/?https://github.com/bibliodados/Apostila-MidiasDigitais/blob/main/index.html)
 
 ## Tema
 
