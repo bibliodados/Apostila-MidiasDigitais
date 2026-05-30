@@ -47,14 +47,18 @@ p{font-size:14px;margin:0 0 9px;text-align:justify}
 ul,ol{margin:6px 0 10px 18px;padding:0}
 li{font-size:14px;margin-bottom:5px}
 strong{color:#172f37}
-.cover{display:grid;grid-template-columns:1fr;gap:14px;align-items:center;min-height:235mm}
-.cover h1{font-size:41px}
-.cover-meta{border-left:5px solid var(--brand2);padding-left:12px;margin-top:12px}
-.brand-head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;margin-bottom:10px}
-.ufnt-logo{width:122px;height:auto;object-fit:contain;background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px}
+.cover{display:flex;flex-direction:column;justify-content:space-between;gap:12mm;min-height:235mm;text-align:center}
+.cover-main{display:flex;flex-direction:column;align-items:center;gap:9mm}
+.cover h1{font-size:43px;max-width:620px;margin:0 auto;color:#123f55}
+.cover .lead{font-size:19px;max-width:610px;margin:0 auto;text-align:center}
+.cover-meta{border-top:2px solid var(--brand2);border-left:0;padding:8mm 0 0;margin:0 auto;max-width:610px;text-align:center}
+.cover-meta p{text-align:center}
+.brand-head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:7px;margin-bottom:4mm}
+.ufnt-logo{width:136px;height:auto;object-fit:contain;background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px}
 .brand-name{font-size:16px;font-weight:800;color:var(--brand);text-transform:uppercase;letter-spacing:.05em}
+.cover-footer{font-size:14px;color:var(--muted);font-weight:700;text-align:center;border-top:1px solid var(--line);padding-top:7mm}
 .cover-hero{background:linear-gradient(135deg,#124559,#2a9d8f);border:0;border-radius:14px;padding:0;margin:10px 0;color:#fff;box-shadow:0 12px 28px rgba(18,69,89,.18);overflow:hidden}
-.cover-photo{display:block;width:100%;height:220px;object-fit:cover}
+.cover-photo{display:block;width:100%;height:185px;object-fit:cover}
 .cover-hero .caption{color:#f4fffc}
 .figure{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px;margin:10px 0}
 .caption{font-size:14px;color:var(--muted);text-align:center;margin-top:5px}
@@ -100,26 +104,23 @@ th{background:#e7f1ef;color:var(--brand);text-align:left;font-size:14px;text-tra
 
 <section class="page" data-page="1">
   <div class="cover">
-    <div>
+    <div class="cover-main">
       <div class="brand-head">
         <img class="ufnt-logo" src="https://ufnt.edu.br/wp-content/uploads/2023/12/logo.png" alt="Logo da UFNT">
         <div class="brand-name">Universidade Federal do Norte do Tocantins - UFNT</div>
       </div>
       <h1>Utilização de Software de Criação e Edição de Vídeo</h1>
       <p class="lead">Apostila ilustrada de apoio para o curso <strong>Marketing e Gestão de Mídias Digitais</strong>.</p>
+      <div class="figure cover-hero">
+        <img class="cover-photo" src="https://images.unsplash.com/photo-1744686959591-eaaec00c999c?auto=format&fit=crop&w=1400&q=80" alt="Pessoa editando vídeo em estação moderna de trabalho">
+        <div class="caption">Figura 1 - Estação de edição de vídeo em ambiente de produção digital. Foto: TourBox/Unsplash.</div>
+      </div>
       <div class="cover-meta">
         <p><strong>Tema:</strong> fluxo de trabalho da produção audiovisual para marketing digital.</p>
-        <p><strong>Objetivo:</strong> orientar a escolha e o uso de ferramentas de vídeo, do briefing à análise de performance.</p>
         <p><strong>Carga horária:</strong> aula de 30 minutos, com aplicação prática.</p>
       </div>
-      <div class="note">
-        <p class="quote">Produzir vídeo para marketing não é apenas “editar bonito”: é organizar atenção, mensagem, identidade e resultado.</p>
-      </div>
     </div>
-    <div class="figure cover-hero">
-      <img class="cover-photo" src="https://images.unsplash.com/photo-1744686959591-eaaec00c999c?auto=format&fit=crop&w=1400&q=80" alt="Pessoa editando vídeo em estação moderna de trabalho">
-      <div class="caption">Figura 1 - Estação de edição de vídeo em ambiente de produção digital. Foto: TourBox/Unsplash.</div>
-    </div>
+    <div class="cover-footer">Curso de Marketing e Gestão de Mídias Digitais · Material didático de apoio</div>
   </div>
 </section>
 
